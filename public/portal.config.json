@@ -1,18 +1,9 @@
 {
-  "name": "Portal OS v2",
-  "ecosystem": "Umbrella Ecosystem",
-  "version": "0.1-alpha",
-
-  "modules": [
-    "identity-physics",
-    "operators",
-    "sim"
-    // "games"   <-- OPTIONAL: add this when you want games loaded
-  ],
-
-  "runtime": {
-    "boot": "src/runtime/boot.js",
-    "loader": "src/runtime/loader.js",
-    "state": "src/runtime/state.js"
+  "modules": {
+    "games": {},
+    "identity-physics": {},
+    "operators": {},
+    "sim": {},
+    "xr": {}
   }
 }
