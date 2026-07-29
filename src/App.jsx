@@ -7,11 +7,17 @@ export default function App() {
   const [modules, setModules] = useState([]);
   const [activeModule, setActiveModule] = useState(null);
 
-  useEffect(() => {
-    if (PortalState.modules) {
+ useEffect(() => {
+  const interval = setInterval(() => {
+    if (PortalState.modules && Object.keys(PortalState.modules).length > 0) {
       setModules(Object.keys(PortalState.modules));
+      clearInterval(interval);
     }
-  }, []);
+  }, 50);
+
+  return () => clearInterval(interval);
+}, []);
+
 
   return (
     <div style={{ display: 'flex', height: '100vh', fontFamily: 'system-ui' }}>
