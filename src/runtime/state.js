@@ -1,11 +1,8 @@
-const state = {
-  ecosystem: 'Umbrella Ecosystem',
-  os: 'Portal OS v2',
-  version: '0.1-alpha',
-  modulesLoaded: []
+// src/runtime/state.js
+
+export const PortalState = {
+  config: {},     // loaded from portal.config.json
+  modules: {}     // populated by loader.js
 };
 
-export function getState() {
-  return state;
-}
 
