@@ -11,14 +11,14 @@ export function loadModule(name) {
     'identity-physics': identityPhysics,
     'operators': operators,
     'sim': simCore,
-    'games': gamesEngine,
-    'xr': xrEngine
+    'games': gamesEngine,   // optional
+    'xr': xrEngine          // optional
   };
 
   if (modules[name]) {
     modules[name]();
   } else {
-    console.warn(`Module not found: ${name}`);
+    console.warn(`Module not found or not enabled: ${name}`);
   }
 }
 
