@@ -5,7 +5,9 @@
   "modules": [
     "identity-physics",
     "operators",
-    "sim"
+    "sim",
+    "games",
+    "xr"
   ],
   "runtime": {
     "boot": "src/runtime/boot.js",
