@@ -1,6 +1,4 @@
 // src/runtime/loader.js
-// MVV‑1B — Step 6‑B
-// Bind routing manifest → module loader
 
 import { ModuleRoutes } from './routing.js';
 import { PortalState } from './state.js';
