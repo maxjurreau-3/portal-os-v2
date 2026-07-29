@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PortalState } from './runtime/state.js';
 import { activateModule } from './runtime/hotswap.js';
-import { ModuleRenderers } from './runtime/renderers.js';
+import { ModuleRenderers } from './runtime/renderers.jsx';
 
 export default function App() {
   const [modules, setModules] = useState([]);
