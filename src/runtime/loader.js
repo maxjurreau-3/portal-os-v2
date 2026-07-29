@@ -1,4 +1,6 @@
 export function loadModule(name) {
   console.log(`Loading module: ${name}`);
-  // placeholder for future Umbrella modules
+
+  // Future: dynamic import
+  // return import(`../modules/${name}/index.js`);
 }
