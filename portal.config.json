@@ -1,0 +1,15 @@
+{
+  "name": "Portal OS v2",
+  "ecosystem": "Umbrella Ecosystem",
+  "version": "0.1-alpha",
+  "modules": [
+    "identity-physics",
+    "operators",
+    "sim"
+  ],
+  "runtime": {
+    "boot": "src/runtime/boot.js",
+    "loader": "src/runtime/loader.js",
+    "state": "src/runtime/state.js"
+  }
+}
