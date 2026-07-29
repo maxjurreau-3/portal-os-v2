@@ -8,3 +8,4 @@ const state = {
 export function getState() {
   return state;
 }
+
