@@ -1,7 +1,4 @@
-// src/runtime/hotswap.js
-// Module Hot‑Swap Layer
-
-import { PortalState } from './state.js';
+import { PortalState } from "./state.js";
 
 export function activateModule(name) {
   if (!PortalState.modules[name]) {
