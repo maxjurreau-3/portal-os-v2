@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PortalState } from './runtime/state.js';
+import { ModuleRenderers } from './runtime/renderers.js';
+
 
 export default function App() {
   const [modules, setModules] = useState([]);
