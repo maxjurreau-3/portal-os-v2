@@ -1,30 +1,64 @@
 import React, { useEffect, useState } from 'react';
-import { bootPortalOS } from './runtime/boot.js';
+import { PortalState } from './runtime/state.js';
 
-function App() {
+export default function App() {
   const [modules, setModules] = useState([]);
+  const [activeModule, setActiveModule] = useState(null);
 
   useEffect(() => {
-    bootPortalOS().then(() => {
-      fetch('/portal.config.json')
-        .then(r => r.json())
-        .then(config => setModules(config.modules));
-    });
+    if (PortalState.modules) {
+      setModules(Object.keys(PortalState.modules));
+    }
   }, []);
 
   return (
-    <div style={{ padding: '24px', fontFamily: 'system-ui' }}>
-      <h1>Portal OS v2</h1>
-      <p>Umbrella Ecosystem OS is running.</p>
+    <div style={{ display: 'flex', height: '100vh', fontFamily: 'system-ui' }}>
+      
+      {/* NavRail */}
+      <div style={{
+        width: '200px',
+        background: '#111',
+        color: '#fff',
+        padding: '20px'
+      }}>
+        <h2 style={{ marginTop: 0 }}>Portal‑OS‑v2</h2>
+        <p style={{ opacity: 0.7 }}>Modules</p>
 
-      <h2>Loaded Modules</h2>
-      <ul>
-        {modules.map(m => (
-          <li key={m}>{m}</li>
-        ))}
-      </ul>
+        <ul style={{ listStyle: 'none', padding: 0 }}>
+          {modules.map(m => (
+            <li 
+              key={m}
+              onClick={() => setActiveModule(m)}
+              style={{
+                padding: '8px 0',
+                cursor: 'pointer',
+                color: activeModule === m ? '#4CAF50' : '#fff'
+              }}
+            >
+              {m}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Viewport */}
+      <div style={{ flex: 1, padding: '24px' }}>
+        {!activeModule && (
+          <>
+            <h1>Umbrella Ecosystem OS</h1>
+            <p>Runtime boot sequence executed.</p>
+            <p>Select a module from the NavRail.</p>
+          </>
+        )}
+
+        {activeModule && (
+          <>
+            <h1>{activeModule.toUpperCase()}</h1>
+            <p>Route: {PortalState.modules[activeModule].route}</p>
+            <p>Module is active and bound to runtime.</p>
+          </>
+        )}
+      </div>
     </div>
   );
 }
-
-export default App;
