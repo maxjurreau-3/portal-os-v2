@@ -16,10 +16,11 @@ export async function bootPortalOS() {
     PortalState.config = config;
 
     // Load modules (object, not array)
-    loadModules(config.modules);
+    loadModules({
+  games: true,
+  "identity-physics": true,
+  operators: true,
+  sim: true,
+  xr: true
+});
 
-    console.log("Boot Complete");
-  } catch (err) {
-    console.error("Boot Error:", err);
-  }
-}
