@@ -52,15 +52,25 @@ export default function App() {
             <p>Select a module from the NavRail.</p>
           </>
         )}
+        {activeModule && (() => {
+  const renderer = ModuleRenderers[activeModule];
+  const payload = renderer ? renderer() : null;
 
-        {activeModule && (
-          <>
-            <h1>{activeModule.toUpperCase()}</h1>
-            <p>Route: {PortalState.modules[activeModule].route}</p>
-            <p>Module is active and bound to runtime.</p>
-          </>
-        )}
+  return (
+    <>
+      <h1>{payload?.title || activeModule.toUpperCase()}</h1>
+      <p>{payload?.description || "Module active."}</p>
+
+      <div style={{ marginTop: "20px", opacity: 0.8 }}>
+        {payload?.content}
       </div>
-    </div>
+
+      <p style={{ marginTop: "20px", fontSize: "0.8rem", opacity: 0.6 }}>
+        Route: {PortalState.modules[activeModule].route}
+      </p>
+    </>
   );
-}
+})()}
+
+
+       
