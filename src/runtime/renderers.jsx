@@ -1,5 +1,13 @@
 // src/runtime/renderers.js
 // Module UI Surfaces
+import { SimPipelineSurface } from "../modules/sim/pipeline.jsx";
+
+sim: () => ({
+  title: "SIM Core",
+  description: "SIM runtime, pipelines, and system orchestration.",
+  content: <SimPipelineSurface />
+}),
+
 
 export const ModuleRenderers = {
   games: () => ({
