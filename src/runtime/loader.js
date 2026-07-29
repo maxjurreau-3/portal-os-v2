@@ -1,24 +1,42 @@
+// src/runtime/loader.js
+// MVV‑1B — Step 6‑B
+// Bind routing manifest → module loader
+
+import { ModuleRoutes } from './routing.js';
+import { PortalState } from './state.js';
+
 import { identityPhysics } from '../modules/identity-physics/index.js';
 import { operators } from '../modules/operators/index.js';
 import { simCore } from '../modules/sim/index.js';
 import { gamesEngine } from '../modules/games/index.js';
 import { xrEngine } from '../modules/xr/index.js';
 
-export function loadModule(name) {
-  console.log(`Loading module: ${name}`);
+export function loadModules(modules) {
+  console.log("[Portal‑OS‑v2] Loading modules...");
 
-  const modules = {
+  const moduleMap = {
     'identity-physics': identityPhysics,
     'operators': operators,
     'sim': simCore,
-    'games': gamesEngine,   // optional
-    'xr': xrEngine          // optional
+    'games': gamesEngine,
+    'xr': xrEngine
   };
 
-  if (modules[name]) {
-    modules[name]();
-  } else {
-    console.warn(`Module not found or not enabled: ${name}`);
-  }
-}
+  Object.keys(modules).forEach(moduleName => {
+    const route = ModuleRoutes[moduleName] || null;
 
+    PortalState.modules[moduleName] = {
+      name: moduleName,
+      route,
+      loaded: true
+    };
+
+    console.log(`[Portal‑OS‑v2] Module Loaded: ${moduleName} → Route: ${route}`);
+
+    if (moduleMap[moduleName]) {
+      moduleMap[moduleName]();
+    }
+  });
+
+  console.log("[Portal‑OS‑v2] All modules loaded.");
+}
