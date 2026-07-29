@@ -1,6 +1,8 @@
 const state = {
-  ecosystem: 'Umbrella',
-  version: 'v2'
+  ecosystem: 'Umbrella Ecosystem',
+  os: 'Portal OS v2',
+  version: '0.1-alpha',
+  modulesLoaded: []
 };
 
 export function getState() {
