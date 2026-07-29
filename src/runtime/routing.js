@@ -1,5 +1,3 @@
-// src/runtime/routing.js
-
 export const ModuleRoutes = {
   games: "/games",
   "identity-physics": "/identity",
