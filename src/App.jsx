@@ -23,6 +23,10 @@ function App() {
           <li key={m}>{m}</li>
         ))}
       </ul>
+
+      <p style={{ marginTop: '20px', opacity: 0.7 }}>
+        Add "games" to portal.config.json to enable the Games Engine.
+      </p>
     </div>
   );
 }
